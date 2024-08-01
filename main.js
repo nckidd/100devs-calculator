@@ -1,3 +1,41 @@
+//when you click a number -> event listener to create number val
+
+//result: concat or create new array to add to main array
+document.querySelector('.num').addEventListener(click, aggregate)
+
+//result: array of arrays that store each expression
+document.querySelector('.key').addEventListener(click, aggregate)
+
+//result: parse through main array in order of pemdas
+document.querySelector('#=').addEventListener(click, equate)
+
+//fn that creates number, key and aggregates expressions
+//result: aggregate num or key
+function aggregate(this) {
+    //if input is number
+        //there are expressions
+            //all expressions are complete
+            //one expression is incomplete
+        //there are no expressions 
+
+    //if input  is key
+        //there are expressions
+            //all expressions are complete
+            //one expression is incomplete
+        //there are no expressions 
+
+    //if input is '.'
+        //there are expressions
+            //all expressions are complete
+            //one expression is incomplete
+        //there are no expressions 
+
+    //if input is equals 
+        //there are expressions
+            //all expressions are complete
+            //one expression is incomplete
+        //there are no expressions 
+}
 class Clickable{
     constructor(value) {
         this._value = value
