@@ -21,11 +21,21 @@ class Clickable{
             - displaySum() clears display and displays value of final array
 */
 class Expression{
-    constructor(num) {
-        super(num)
+    constructor(array) {
+        this.expressionArr = []
     }
-    createArray() {
+    newArray() {
+        let array = []
+        return array;
+    }
+    pushKey() {
+        let index = 0;
+        for (let arr of this.expressionArr) {
+            //if all arrays are complete, add a new array
 
+            //else, add key to the incomplete array
+
+        }
     }
 }
 
@@ -39,6 +49,7 @@ class NumberVal extends Clickable{
     constructor(num) {
         super(num)
     }
+
 }
 
 /* Key is an obj that is created upon clicking the division, 
