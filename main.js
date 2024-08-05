@@ -1,40 +1,67 @@
 //when you click a number -> event listener to create number val
 
+//global vars, will change to local
+    //array containing the expression arrays
+    let expressions = [];
+
 //result: concat or create new array to add to main array
-document.querySelector('.num').addEventListener(click, aggregate)
+document.querySelector('#one').addEventListener('click', aggregate)
 
 //result: array of arrays that store each expression
-document.querySelector('.key').addEventListener(click, aggregate)
+document.querySelector('.key').addEventListener('click', aggregate)
 
 //result: parse through main array in order of pemdas
-document.querySelector('#=').addEventListener(click, equate)
+// document.querySelector('#=').addEventListener('click', equate)
 
 //fn that creates number, key and aggregates expressions
 //result: aggregate num or key
-function aggregate(this) {
+function aggregate(click) {
     //if input is number
-        //there are expressions
-            //all expressions are complete
-            //one expression is incomplete
-        //there are no expressions 
-
+    if (click.target.classList.contains('num')){
+        //check expression status
+        handleExpression()
+    }
     //if input  is key
-        //there are expressions
-            //all expressions are complete
-            //one expression is incomplete
-        //there are no expressions 
-
+    if (click.target.classList.contains('key')){
+        //check expression status
+        checkExpressions()
+    }
     //if input is '.'
-        //there are expressions
-            //all expressions are complete
-            //one expression is incomplete
-        //there are no expressions 
-
+    if (click.target.attributes.contains('.')){
+        //check expression status
+        checkExpressions()
+    }
     //if input is equals 
-        //there are expressions
-            //all expressions are complete
-            //one expression is incomplete
-        //there are no expressions 
+    if (click.target.attributes.contains('=')){
+        //check expression status
+        checkExpressions()
+    }
+}
+//either creates new expression or adds to existing expression
+function handleExpression(val) {
+    let status = checkExpressions()
+    if (status === 'none' || status === 'complete') {
+        //return new expression object
+    } else if (status === 'incomplete') {
+        //add to last expression object
+    }
+}
+
+function checkExpressions() {
+    //if there are expressions
+    if (expressions.length > 0) {
+        expressions.forEach(function(x,a) {
+            //all expressions are complete, return 'complete'        
+            if (x[x.length-1].classList.contains('key')) {
+                return 'complete'
+            //one expression is incomplete, return 'incomplete'
+            } else {
+                return 'incomplete'
+            }
+        });
+    }
+    //there are no expressions, return 'none'
+    return 'none'
 }
 class Clickable{
     constructor(value) {
@@ -105,7 +132,7 @@ class Key extends Clickable{
 }
 
 class Equals extends Clickable{
-    constructor()
+    constructor() {}
 }
 
 /*
